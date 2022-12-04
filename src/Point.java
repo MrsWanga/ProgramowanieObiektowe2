@@ -7,9 +7,11 @@ public class Point {
 
     public static final Point zeroZero=new Point(0.0 ,0.0);
     public static final Point oneZero=new Point(1.0 ,0.0);
+    public static Point of(double x, double y){
+        return new Point(x,y);
+    }
 
-
-    public Point (double x, double y){
+    private Point (double x, double y){
         this.X=x;
         this.Y=y;
     }
