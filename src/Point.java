@@ -47,8 +47,8 @@ public class Point {
     }
 
     Point rotate(int degree){
-        double newX = this.getX()*Math.cos(degree)-this.getY()*Math.sin(degree);
-        double newY = this.getX()*Math.sin(degree)+this.getY()*Math.cos(degree);
+        double newX = this.getX()*Math.cos(Math.toRadians(degree))+this.getY()*Math.sin(Math.toRadians(degree));
+        double newY = -this.getX()*Math.sin(Math.toRadians(degree))+this.getY()*Math.cos(Math.toRadians(degree));
         Point newPoint = new Point(newX, newY);
         return newPoint;
     }
