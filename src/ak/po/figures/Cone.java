@@ -9,6 +9,7 @@ public class Cone extends Solid{
     }
 
     public void setR(double r) {
+        Validator.getInstance().validateDouble(r);
         this.r = r;
     }
 
@@ -17,6 +18,7 @@ public class Cone extends Solid{
     }
 
     public void setH(double h) {
+        Validator.getInstance().validateDouble(h);
         this.h = h;
     }
 
@@ -41,5 +43,14 @@ public class Cone extends Solid{
         return super.equals(o)
                 && Double.compare(cone.r, this.r) <= epsilon
                 && Double.compare(cone.h, this.h) <= epsilon;
+    }
+
+    @Override
+    public String toString() {
+        return "Cone{" +
+                "r=" + r +
+                ", h=" + h +
+                ", unit=" + unit +
+                '}';
     }
 }

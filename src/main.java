@@ -28,10 +28,14 @@ public class main {
         three.setB(5);
         three.setC(7);
 
-        System.out.println("1and2");
-        System.out.println(one.equals(two));
-        System.out.println("1and3");
-        System.out.println(one.equals(three));
+        System.out.println(one);
+        System.out.println("Volume="+one.volume());
+        System.out.println("Surface="+one.surfaceArea());
+
+        System.out.println(one + " and " + two);
+        System.out.println("Is the same? "+one.equals(two));
+        System.out.println(one + " and " + three);
+        System.out.println("Is the same? "+one.equals(three));
         System.out.println();
 
         //test cone
@@ -46,12 +50,16 @@ public class main {
         five.setH(5);
 
         six.setR(2);
-        six.setH(5);
+        six.setH(-5);
 
-        System.out.println("4and5");
-        System.out.println(four.equals(five));
-        System.out.println("5and6");
-        System.out.println(five.equals(six));
+        System.out.println(five);
+        System.out.println("Volume="+five.volume());
+        System.out.println("Surface="+five.surfaceArea());
+
+        System.out.println(four + " and " + five);
+        System.out.println("Is the same? "+four.equals(five));
+        System.out.println(five + " and " + six);
+        System.out.println("Is the same? "+five.equals(six));
 
     }
 

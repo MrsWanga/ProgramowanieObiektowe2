@@ -12,6 +12,7 @@ public class Cuboid extends Solid{
     }
 
     public void setA(double a) {
+        Validator.getInstance().validateDouble(a);
         this.a = a;
     }
 
@@ -20,6 +21,7 @@ public class Cuboid extends Solid{
     }
 
     public void setB(double b) {
+        Validator.getInstance().validateDouble(b);
         this.b = b;
     }
 
@@ -28,6 +30,7 @@ public class Cuboid extends Solid{
     }
 
     public void setC(double c) {
+        Validator.getInstance().validateDouble(c);
         this.c = c;
     }
 
@@ -58,6 +61,16 @@ public class Cuboid extends Solid{
                 && Double.compare(cuboid.a, a) <= epsilon
                 && Double.compare(cuboid.b, b) <= epsilon
                 && Double.compare(cuboid.c, c) <= epsilon;
+    }
+
+    @Override
+    public String toString() {
+        return "Cuboid{" +
+                "a=" + a +
+                ", b=" + b +
+                ", c=" + c +
+                ", unit=" + unit +
+                '}';
     }
 
     @Override
