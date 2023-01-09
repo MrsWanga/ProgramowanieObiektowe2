@@ -3,9 +3,9 @@ package ak.po.figures;
 import java.util.Objects;
 
 public class Cuboid extends Solid{
-    public double a;
-    public double b;
-    public double c;
+    private double a;
+    private double b;
+    private double c;
 
     public double getA() {
         return a;
