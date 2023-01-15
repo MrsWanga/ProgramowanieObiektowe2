@@ -43,14 +43,14 @@ public class main {
         Cone five = new Cone(Unit.CENTYMETRY);
         Cone six = new Cone(Unit.CENTYMETRY);
 
-        four.setR(2);
+        four.setR(2.6);
         four.setH(5);
 
         five.setR(2);
         five.setH(5);
 
-        six.setR(2);
-        six.setH(-5);
+        six.setR(2.1);
+        six.setH(5.1);
 
         System.out.println(five);
         System.out.println("Volume="+five.volume());

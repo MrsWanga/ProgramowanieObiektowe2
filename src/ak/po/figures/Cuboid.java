@@ -58,10 +58,11 @@ public class Cuboid extends Solid{
         double epsilon = 0.5;
         Cuboid cuboid = (Cuboid) o;
         return super.equals(o)
-                && Double.compare(cuboid.a, a) <= epsilon
-                && Double.compare(cuboid.b, b) <= epsilon
-                && Double.compare(cuboid.c, c) <= epsilon;
+                && Double.compare(cuboid.a, this.a) <= epsilon
+                && Double.compare(cuboid.b, this.b) <= epsilon
+                && Double.compare(cuboid.c, this.c) <= epsilon;
     }
+
 
     @Override
     public String toString() {
