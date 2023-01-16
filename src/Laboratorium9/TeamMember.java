@@ -7,7 +7,7 @@ public abstract class TeamMember {
     String surname;
     String pesel;
 
-    TeamMember (String name, String surname, String pesel){
+    TeamMember(String name, String surname, String pesel){
         this.name=name;
         this.surname=surname;
         this.pesel=pesel;
