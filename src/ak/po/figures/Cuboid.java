@@ -39,8 +39,11 @@ public class Cuboid extends Solid{
         return super.getUnit();
     }
 
-    public Cuboid(Unit unit) {
+    public Cuboid(Unit unit, double a, double b, double c) {
         super(unit);
+        this.a = a;
+        this.b = b;
+        this.c = c;
     }
 
     @Override
@@ -58,9 +61,9 @@ public class Cuboid extends Solid{
         double epsilon = 0.5;
         Cuboid cuboid = (Cuboid) o;
         return super.equals(o)
-                && Double.compare(cuboid.a, this.a) <= epsilon
-                && Double.compare(cuboid.b, this.b) <= epsilon
-                && Double.compare(cuboid.c, this.c) <= epsilon;
+                &&  Math.abs(this.a-cuboid.a)<epsilon
+                &&  Math.abs(this.b-cuboid.b)<epsilon
+                &&  Math.abs(this.c-cuboid.c)<epsilon;
     }
 
 

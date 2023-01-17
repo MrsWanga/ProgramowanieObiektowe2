@@ -22,6 +22,12 @@ public class Cone extends Solid{
         this.h = h;
     }
 
+    public Cone(Unit unit, double r, double h) {
+        super(unit);
+        this.r = r;
+        this.h = h;
+    }
+
     public Cone(Unit unit) {
         super(unit);
     }
@@ -41,8 +47,8 @@ public class Cone extends Solid{
         double epsilon = 0.5;
         Cone cone = (Cone) o;
         return super.equals(o)
-                && Double.compare(cone.r, this.r) <= epsilon
-                && Double.compare(cone.h, this.h) <= epsilon;
+                &&  Math.abs(this.h-cone.getH())<epsilon
+                &&  Math.abs(this.r-cone.getR())<epsilon;
     }
 
     @Override
