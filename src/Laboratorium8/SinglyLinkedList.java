@@ -1,4 +1,4 @@
-package Lab8;
+package Laboratorium8;
 
 public class SinglyLinkedList<E> implements List<E>{
     Item first;
@@ -30,7 +30,7 @@ public class SinglyLinkedList<E> implements List<E>{
 
     @Override
     public boolean add(E element) {
-
+        if(!Validator.getInstance().isNull(element)){
         Item nItem = new Item(element);
         if (this.amount==0) {
             this.first = nItem;
@@ -40,23 +40,32 @@ public class SinglyLinkedList<E> implements List<E>{
         last = nItem;
         amount++;
         return true;
+        }else{
+            System.out.println("Element dodawany do listy jest pusty");
+            return false;
+        }
     }
 
     @Override
     public void add(int index, E element) {
-        Item item = this.first;
-        Item nItem = new Item(element);
-        for (int i=0; i<index; i++ ) {
-            item=item.next;
+        if(!Validator.getInstance().isNull(element)){
+            Item item = this.first;
+            Item nItem = new Item(element);
+            for (int i=0; i<index; i++ ) {
+                item=item.next;
+            }
+            nItem.next=item.next;
+            item.next=nItem;
+            if(index==0){
+                this.first=nItem;
+            }else if(index==this.amount){
+                this.last=nItem;
+            }
+            this.amount++;
+        }else{
+            System.out.println("Element dodawany do listy jest pusty");
         }
-        nItem.next=item.next;
-        item.next=nItem;
-        if(index==0){
-            this.first=nItem;
-        }else if(index==this.amount){
-            this.last=nItem;
-        }
-        this.amount++;
+
     }
 
     @Override
@@ -96,16 +105,21 @@ public class SinglyLinkedList<E> implements List<E>{
 
     @Override
     public int indexOf(Object o) {
-        Item item = this.first;
-        int a=-1;
-        for (int i=0; i<amount; i++) {
-            if(item.data.equals(o)){
-                a=i;
-                break;
+        if(!Validator.getInstance().isNull(o)) {
+            Item item = this.first;
+            int a = -1;
+            for (int i = 0; i < amount; i++) {
+                if (item.data.equals(o)) {
+                    a = i;
+                    break;
+                }
+                item = item.next;
             }
-            item=item.next;
+            return a;
+        }else{
+            System.out.println("Próbujesz wyszukać obiekt, który jest pusty");
+            return -1;
         }
-        return a;
     }
 
     @Override
@@ -128,6 +142,7 @@ public class SinglyLinkedList<E> implements List<E>{
             this.amount--;
             return true;
         }catch (Exception e){
+            System.out.println("Nie można usunąć elementu z listy");
             return false;
         }
     }

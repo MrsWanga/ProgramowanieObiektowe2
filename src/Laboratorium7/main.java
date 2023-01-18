@@ -1,7 +1,4 @@
-import ak.po.figures.Cone;
-import ak.po.figures.Cuboid;
-import ak.po.figures.Solid;
-import ak.po.figures.Unit;
+package Laboratorium7;
 
 public class main {
     public static void main(String[] args) {

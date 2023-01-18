@@ -1,4 +1,4 @@
-package ak.po.figures;
+package Laboratorium7;
 
     public enum Unit {
         MILIMETRY("mm"),

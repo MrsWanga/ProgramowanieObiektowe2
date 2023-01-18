@@ -1,4 +1,4 @@
-package Lab8;
+package Laboratorium8;
 
 public interface List <E>{
     boolean add(E element);// dodaje element na końcu listy;

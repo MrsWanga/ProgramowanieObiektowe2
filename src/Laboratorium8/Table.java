@@ -1,6 +1,4 @@
-package Lab8;
-
-import Laboratorium9.TeamMember;
+package Laboratorium8;
 
 public class Table {
     private int height;

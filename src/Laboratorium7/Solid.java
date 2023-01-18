@@ -1,4 +1,4 @@
-package ak.po.figures;
+package Laboratorium7;
 
 import java.util.Objects;
 

@@ -17,7 +17,15 @@ public abstract class TeamMember {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if(!Validator.getInstance().isNull(name)){
+            if(Validator.getInstance().onlyLettersValidator(name)){
+                this.name = name;
+            }else {
+                System.out.println("Imię może się składać tylko z małych i dużych liter oraz spacji");
+            }
+        }else{
+            System.out.println("Imię nie może być puste");
+        }
     }
 
     public String getSurname() {
@@ -25,7 +33,16 @@ public abstract class TeamMember {
     }
 
     public void setSurname(String surname) {
-        this.surname = surname;
+        if(!Validator.getInstance().isNull(surname)){
+            if(Validator.getInstance().onlyLettersValidator(surname)){
+                this.surname = surname;
+            }else {
+                System.out.println("Nazwisko może się składać tylko z małych i dużych liter oraz spacji");
+            }
+        }else{
+            System.out.println("Nazwisko nie może być puste");
+        }
+
     }
 
     public String getPesel() {
@@ -33,7 +50,11 @@ public abstract class TeamMember {
     }
 
     public void setPesel(String pesel) {
-        this.pesel = pesel;
+        if (Validator.getInstance().isCorrectPesel(pesel)){
+            this.pesel = pesel;
+        }else{
+            System.out.println("Podano nbiepoprawny numer pesel");
+        }
     }
 
     public int compareTo(TeamMember tm){

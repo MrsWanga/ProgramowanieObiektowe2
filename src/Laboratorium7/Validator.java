@@ -1,6 +1,4 @@
-package ak.po.figures;
-
-import java.net.PortUnreachableException;
+package Laboratorium7;
 
 public class Validator {
     private static final Validator INSTANCE = new Validator();

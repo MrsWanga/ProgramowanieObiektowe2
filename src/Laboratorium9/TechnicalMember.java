@@ -2,8 +2,9 @@ package Laboratorium9;
 
 public class TechnicalMember extends TeamMember{
     private String role;
-    TechnicalMember(String name, String surname, String pesel) {
+    TechnicalMember(String name, String surname, String pesel, String role) {
         super(name, surname, pesel);
+        setRole(role);
     }
 
     public String getRole() {
@@ -12,5 +13,15 @@ public class TechnicalMember extends TeamMember{
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "TechnicalMember{" +
+                "role='" + role + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", pesel='" + pesel + '\'' +
+                '}';
     }
 }

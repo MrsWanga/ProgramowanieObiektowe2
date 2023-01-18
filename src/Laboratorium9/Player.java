@@ -12,6 +12,9 @@ public class Player extends TeamMember{
            int age,
            String position) {
         super(name, surname, pesel);
+        setAge(age);
+        setNumber(number);
+        setPosition(position);
     }
 
     public int getNumber() {
@@ -36,5 +39,17 @@ public class Player extends TeamMember{
 
     public void setPosition(String position) {
         this.position = position;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "number=" + number +
+                ", age=" + age +
+                ", position='" + position + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", pesel='" + pesel + '\'' +
+                '}';
     }
 }
