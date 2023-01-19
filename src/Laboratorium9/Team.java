@@ -1,6 +1,5 @@
 package Laboratorium9;
 
-import Laboratorium8.SinglyLinkedList;
 
 import java.sql.SQLOutput;
 import java.util.*;
@@ -9,26 +8,26 @@ import java.util.function.Predicate;
 import static java.lang.Long.parseLong;
 
 public class Team extends TeamRepository {
-    SinglyLinkedList<TeamMember> teamMemberList;
+    LinkedList<TeamMember> teamMemberList;
     private static final Team INSTANCE = new Team();
     public static Team getInstance(){ return INSTANCE;}
 
     public Team() {
-        this.teamMemberList=new SinglyLinkedList<TeamMember>();
+        this.teamMemberList=new LinkedList<TeamMember>();
     }
 
-    public SinglyLinkedList<TeamMember> getPlayers(){
+    public LinkedList<TeamMember> getPlayers(){
         Predicate<TeamMember> isPlayer = o -> o instanceof Player;
         return TeamRepository.getInstance().filter(isPlayer);
     }
 
-    public SinglyLinkedList<TeamMember> getTechnicals(){
+    public LinkedList<TeamMember> getTechnicals(){
         Predicate<TeamMember> isTechnical = o -> o instanceof TechnicalMember;
         return TeamRepository.getInstance().filter(isTechnical);
     }
     public TeamMember getMember(String pesel){
         Predicate<TeamMember> isSearchedMember = o -> o.pesel.equals(pesel);
-        return TeamRepository.getInstance().get(isSearchedMember);
+        return TeamRepository.getInstance().get(pesel);
     }
 
     public boolean removeMember(String pesel){

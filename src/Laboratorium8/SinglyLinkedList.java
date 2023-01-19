@@ -1,6 +1,6 @@
 package Laboratorium8;
 
-public class SinglyLinkedList<E> implements List<E>{
+public class SinglyLinkedList<E> implements List<E> {
     Item first;
     Item last;
     int amount;
@@ -83,15 +83,14 @@ public class SinglyLinkedList<E> implements List<E>{
 
     @Override
     public boolean contains(Object o) {
-        boolean isContains=false;
         Item item = this.first;
         for (int i=0; i<amount; i++) {
             if (item.data.equals(o)) {
-                isContains = true;
-                break;
+                return true;
             }
+            item=item.next;
         }
-        return isContains;
+        return false;
     }
 
     @Override
@@ -133,12 +132,13 @@ public class SinglyLinkedList<E> implements List<E>{
             Item item = this.first;
             if (index==0){
                 this.first = this.first.next;
+                return true;
             }
-            for (int i=0; i<index; i++) {
+            for (int i=0; i<index-1; i++) {
                 item=item.next;
             }
-            item.data=null;
-            item.next=null;
+            item.next.data=null;
+            item.next=item.next.next;
             this.amount--;
             return true;
         }catch (Exception e){

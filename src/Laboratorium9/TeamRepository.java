@@ -1,9 +1,6 @@
 package Laboratorium9;
-
-import Laboratorium8.SinglyLinkedList;
 import Laboratorium8.Validator;
-
-import java.util.List;
+import java.util.LinkedList;
 import java.util.function.Predicate;
 
 public class TeamRepository implements RepositoryInterface{
@@ -28,11 +25,12 @@ public class TeamRepository implements RepositoryInterface{
                 System.out.println("Blad: nowy obiekt nie jest klasy TeamMember" +e);
                 return false;
             }
-            Predicate<TeamMember> checkPesel = teamMember -> teamMember.pesel.equals((TeamMember)oldValue);
+
             try{
                 int index=Team.getInstance().teamMemberList.indexOf(oldValue);
                 Team.getInstance().teamMemberList.remove(index);
                 Team.getInstance().teamMemberList.add(index,tm);
+                System.out.println(Team.getInstance());
                 return true;
             }catch(Exception e) {
                 System.out.println("Blad: Nie można zaktualizować obiektu." +e);
@@ -45,14 +43,14 @@ public class TeamRepository implements RepositoryInterface{
     }
 
     @Override
-    public SinglyLinkedList<TeamMember> getAll() {
+    public LinkedList<TeamMember> getAll() {
         return Team.getInstance().teamMemberList;
     }
 
-    public TeamMember get(Predicate predicate) {
+    public TeamMember get(String  pesel) {
         TeamMember tm=null;
         for ( int i=0; i<Team.getInstance().teamMemberList.size(); i++){
-            if (predicate.test(Team.getInstance().teamMemberList.get(i))) {
+            if (Team.getInstance().teamMemberList.get(i).pesel.equals(pesel) ) {
                 tm=Team.getInstance().teamMemberList.get(i);
             }
         }
@@ -65,8 +63,8 @@ public class TeamRepository implements RepositoryInterface{
     }
 
     @Override
-    public SinglyLinkedList<TeamMember> filter(Predicate predicate) {
-        SinglyLinkedList<TeamMember> newList = new SinglyLinkedList<TeamMember>();
+    public LinkedList<TeamMember> filter(Predicate predicate) {
+        LinkedList<TeamMember> newList = Team.getInstance().teamMemberList;
         for ( int i=0; i<Team.getInstance().teamMemberList.size(); i++){
             if (predicate.test(Team.getInstance().teamMemberList.get(i))) {
                 newList.add(Team.getInstance().teamMemberList.get(i));
@@ -78,7 +76,8 @@ public class TeamRepository implements RepositoryInterface{
     @Override
     public boolean remove(Object object) {
         TeamMember tm = (TeamMember) object;
-        if(Team.getInstance().teamMemberList.contains(tm.pesel)){
+        System.out.println(tm);
+        if(Team.getInstance().teamMemberList.contains(tm)){
             Team.getInstance().teamMemberList.remove(Team.getInstance().teamMemberList.indexOf(object));
             return true;
         }else{
