@@ -1,31 +1,37 @@
 package Laboratorium9;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class TeamMember {
+public abstract class TeamMember implements Serializable, Comparable<TeamMember> {
     String name;
     String surname;
     String pesel;
+
+    static class ValidationError {
+        public static final String NAME = "Imię jest wymagane";
+        public static final String SURNAME = "Nazwisko jest wymagane";
+        public static final String PESEL = "Pesel jest wymagany";
+    }
 
     TeamMember(String name, String surname, String pesel){
         this.name=name;
         this.surname=surname;
         this.pesel=pesel;
     }
+
+    public TeamMember(TeamMember tm){
+        setName(tm.getName());
+        setSurname(tm.getSurname());
+        setPesel(tm.getPesel());
+    }
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
-        if(!Validator.getInstance().isNull(name)){
-            if(Validator.getInstance().onlyLettersValidator(name)){
-                this.name = name;
-            }else {
-                System.out.println("Imię może się składać tylko z małych i dużych liter oraz spacji");
-            }
-        }else{
-            System.out.println("Imię nie może być puste");
-        }
+        RequiredStringValidator.getInstance().validate(name, ValidationError.NAME);
+        this.name=name;
     }
 
     public String getSurname() {
@@ -33,16 +39,8 @@ public abstract class TeamMember {
     }
 
     public void setSurname(String surname) {
-        if(!Validator.getInstance().isNull(surname)){
-            if(Validator.getInstance().onlyLettersValidator(surname)){
-                this.surname = surname;
-            }else {
-                System.out.println("Nazwisko może się składać tylko z małych i dużych liter oraz spacji");
-            }
-        }else{
-            System.out.println("Nazwisko nie może być puste");
-        }
-
+        RequiredStringValidator.getInstance().validate(surname, ValidationError.SURNAME);
+        this.surname=surname;
     }
 
     public String getPesel() {
@@ -50,7 +48,8 @@ public abstract class TeamMember {
     }
 
     public void setPesel(String pesel) {
-        if (Validator.getInstance().isCorrectPesel(pesel)){
+        RequiredStringValidator.getInstance().validate(pesel, ValidationError.PESEL);
+        if (PeselValidator.getInstance().isCorrectPesel(pesel)){
             this.pesel = pesel;
         }else{
             System.out.println("Podano nbiepoprawny numer pesel");

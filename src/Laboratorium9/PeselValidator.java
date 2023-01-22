@@ -1,8 +1,8 @@
 package Laboratorium9;
 
-public class Validator {
-    private static final Validator INSTANCE = new Validator();
-    public static Validator getInstance(){ return INSTANCE;}
+public class PeselValidator {
+    private static final PeselValidator INSTANCE = new PeselValidator();
+    public static PeselValidator getInstance(){ return INSTANCE;}
     public boolean isNull (Object a) {
         return a==null;
     }

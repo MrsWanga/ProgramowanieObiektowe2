@@ -7,6 +7,11 @@ public class TechnicalMember extends TeamMember{
         setRole(role);
     }
 
+    public TechnicalMember(TechnicalMember tm){
+        super(tm);
+        setRole(tm.getRole());
+    }
+
     public String getRole() {
         return role;
     }

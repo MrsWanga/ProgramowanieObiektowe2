@@ -17,6 +17,13 @@ public class Player extends TeamMember{
         setPosition(position);
     }
 
+    public Player(Player player){
+        super(player);
+        setNumber(player.getNumber());
+        setAge(player.getAge());
+        setPosition(player.getPosition());
+    }
+
     public int getNumber() {
         return number;
     }
