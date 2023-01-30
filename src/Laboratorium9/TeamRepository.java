@@ -9,8 +9,6 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class TeamRepository implements RepositoryInterface<TeamMember>{
-//    private static final TeamRepository INSTANCE = new Team();
-//    public static TeamRepository getInstance(){ return INSTANCE;}
 
     protected LinkedHashSet<TeamMember> data;
     protected String fileName;
@@ -75,7 +73,6 @@ public class TeamRepository implements RepositoryInterface<TeamMember>{
     public boolean update(TeamMember oldValue, TeamMember newValue) {
         for(TeamMember tm:data){
             if(tm.equals(oldValue)){
-                tm=newValue;
                 try{
                     save();
                 }catch (IORepositoryException e){
@@ -91,21 +88,6 @@ public class TeamRepository implements RepositoryInterface<TeamMember>{
     public List<TeamMember> getAll() {
          return List.copyOf(data);
     }
-
-//    public TeamMember get(String  pesel) {
-//        TeamMember tm=null;
-//        for ( int i=0; i<Team.getInstance().teamMemberList.size(); i++){
-//            if (Team.getInstance().teamMemberList.get(i).pesel.equals(pesel) ) {
-//                tm=Team.getInstance().teamMemberList.get(i);
-//            }
-//        }
-//        if(Validator.getInstance().isNull(tm)){
-//            System.out.print("Nie ma członka zespołu o takim numerze pesel");
-//            return null;
-//        }else{
-//            return tm;
-//        }
-//    }
 
     @Override
     public List<TeamMember> filter(Predicate <TeamMember> predicate) {
@@ -130,4 +112,6 @@ public class TeamRepository implements RepositoryInterface<TeamMember>{
         }
         return result;
     }
+
+
 }

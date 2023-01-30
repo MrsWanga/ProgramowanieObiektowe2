@@ -14,9 +14,14 @@ public class test {
         sl.add(0,t2);
         System.out.println(sl);
 
-        //boolean remove
-        System.out.println(sl.remove(0));
+        sl.add(1,t3);
         System.out.println(sl);
+//
+//        sl.
+//
+//        //boolean remove
+//        System.out.println(sl.remove(0));
+//        System.out.println(sl);
 
         //boolean contains
         System.out.println(sl.contains(t2));

@@ -52,7 +52,7 @@ public abstract class TeamMember implements Serializable, Comparable<TeamMember>
         if (PeselValidator.getInstance().isCorrectPesel(pesel)){
             this.pesel = pesel;
         }else{
-            System.out.println("Podano nbiepoprawny numer pesel");
+            System.out.println("Podano niepoprawny numer pesel");
         }
     }
 
